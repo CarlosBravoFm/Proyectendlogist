@@ -1,0 +1,21 @@
+import express from 'express';
+import mongoose, { Mongoose, mongo } from 'mongoose';
+
+const server = express();   
+const PORT = 3000;
+
+server.use(express.json());
+
+async function main() {
+    try {
+        await mongoose.connect('mongodb+srv://CarlosBF:Santafe10+@cluster0.vep1mp4.mongodb.net/');      
+        server.listen(PORT, () => {
+            console.log('Server up in http://localhost:${PORT}');
+        });  
+
+    } catch (error) {
+        console.error('Error',error.message);     
+    }
+}
+
+main();
